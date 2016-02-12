@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="script.js" charset="utf-8"></script>
+  <style type="text/css">
+
+  .text-right{
+  	text-align: right ;
+  }
+  .form-box{
+  	border: 5px solid white;
+  	background-color: #FAFAFA;
+  	margin-top: 2%;
+  	padding: 2%;
+  	color : #263238;  
+  }
+  .nice-row{
+  	padding: 1%;
+  }
+  .outline {
+  	border-bottom: 5px solid #1976D2;
+  	padding: 2%;
+  	text-align: center;
+  }
+  </style>
+</head>
+
+<body ng-app ="myApp" ng-controller ="myCtrl">
+    <nav class="navbar navbar-fixed-top navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">NBR</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li ><a href="#">Registration Form</a></li>
+                <li><a href="receipt.html">Receipt</a></li> 
+            </ul>
+        </div>
+    </nav>    
+    <div class="container" style = "margin-top: 2%">
+    	<div class = "row" >
+    		<h2 class = "outline">
+    			Particulars of the Applicant for Membership
+    		</h2>
+    	</div>
+    </div>
+    <div class= "container form-box">
+
+        <div class = "row">
+            <div class = "col-sm-3" style="text-align:right">
+                <label > Membership  Number :</label>
+            </div>
+            <div class ="col-sm-8">
+                <input class = "form-control" type = "text" placeholder = "search user by membership number">
+            </div>
+            <div class="col-sm-offset-3 col-sm-4 nice-row">
+                <button class = "btn btn-success"> 
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                    search
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class ="container form-box" >
+    	<div class = "row nice-row" ng-repeat = "x in fieldNames">
+    		<div class = "col-sm-3 text-right" >
+    			<h5>{{x}} :</h5> 
+    		</div>
+    		<div class = "col-sm-6" ng-hide = "checkDate($index)">
+    			<textarea class = "form-control" type="{{checkDate($index)}}"  ng-model = "fieldAns[$index]" style = "resize:none; border-radius: 2px" rows= "{{txtRowSize(x)}}">
+    				
+    			</textarea>
+    		</div>
+            <div class = "col-sm-6" ng-show = "checkDate($index)">
+                <input class = "form-control" type = "date"  ng-model = "dateFieldAns[$index]" />
+            </div>
+    	</div>
+    </div>
+    <div class = "container form-box">
+        <div class = "row">
+            <div class="alert alert-danger" ng-show = "alertOn">
+                <strong>Danger!</strong> Some Required fields are missing. Please check Name ,Member Id Or Registration Date,
+            </div>
+            <div class = "col-sm-offset-4 col-sm-6">
+                <button class = "btn btn-success" style = "width : 50%" ng-click = "submitForm()">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    submit 
+                </button>
+            </div>
+        </div>
+    </div>
+</body>

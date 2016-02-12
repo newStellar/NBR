@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Member History</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+  <script src="mh_script.js" charset="utf-8"></script>
+  <style type="text/css">
+
+  .text-right{
+  	text-align: right ;
+  }
+  .form-box{
+  	border-top: 5px solid  #1976D2;
+    
+  	background-color: #FAFAFA;
+  	margin-top: 2%;
+  	padding: 2%;
+  	color : #263238;  
+  }
+  .nice-row{
+  	padding: 1%;
+  }
+  .outline {
+  	border-bottom: 5px solid #1976D2;
+  	padding: 2%;
+  	text-align: center;
+  }
+  .middle-row{
+
+    padding-top: 1%;
+    background-color: #FAFAFA;
+  }
+  </style>
+</head>
+
+<body ng-app ="memberHistoryApp" ng-controller ="myCtrl">
+  <div class ="container form-box" >
+    <div class = "row nice-row">
+      <div class = "col-sm-6">
+
+            <div class = "row middle-row ">
+              <div class = "col-sm-3 text-right"> Membership:</div>
+              <div class = "col-sm-9"> 
+              <input  class = "form-control" type =  "text" />
+              </div>
+            </div>
+            <div class = "row middle-row">
+              <div class = "col-sm-3 text-right"> Name:</div>
+              <div class = "col-sm-9"> 
+              <input class = "form-control" type = "text" />
+              </div>
+            </div>
+            <div class = "row middle-row">
+              <div class = "col-sm-3 text-right"> fn:</div>
+              <div class = "col-sm-9"> 
+              <input class = "form-control" type = "text" />
+              </div>
+            </div>
+             <div class = "row middle-row">
+              <div class = "col-sm-3 text-right "> Mn:</div>
+              <div class = "col-sm-9"> 
+              <input class = "form-control" type = "text" />
+              </div>
+            </div>
+            <div class = "row middle-row">
+              <div class = "col-sm-3 text-right "> Address:</div>
+              <div class = "col-sm-9"> 
+                <input class = "form-control" type = "text" />
+            </div>
+            </div>
+            <div class = "row middle-row">
+              <div class = "col-sm-3 text-right "> Telephone Number:</div>
+              <div class = "col-sm-9"> 
+                <input class = "form-control" type = "text" />
+              </div>
+            </div>
+          </div>
+          <div class = "col-sm-6">
+            <div class = "row middle-row">
+              <div class = "col-sm-3 text-right"> Date of Birth:</div>
+              <div class = "col-sm-9"> 
+              <input class = "form-control" type = "text" />
+              </div>
+            </div>
+            <div class = "row middle-row">
+              <div class = "col-sm-3 text-right"> Date of enrollment:</div>
+              <div class = "col-sm-9"> 
+              <input class = "form-control" type = "text" />
+              </div>
+            </div>
+
+            <div class = "row middle-row">
+              <div class = "col-sm-3 text-right"> Year:</div>
+              <div class = "col-sm-9"> 
+              <input class = "form-control" type = "text" />
+              </div>
+            </div>
+          </div>    
+      </div>
+    </div>
+
+    <div class = "container form-box" style = "border: 0px">
+      <div class = "row">
+        <table class="table table-bordered table-hover" style  = "border-top: 5px solid #4CAF50; ">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>RN</th>
+              <th>Paid Up To</th>
+              <th>Re-Admission</th>
+              <th>Monthly sybscription</th>
+              <th>Benevolent Fund</th>
+              <th>Voluntary Deposit Fund</th>
+              <th>National Bar</th>
+              <th>Donation</th>
+              <th>Wefare Fund</th>
+              <th>Training</th>
+              <th>Accomodation</th>
+              <th>Others</th>
+              <th>Total</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+             
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  
+</body>
