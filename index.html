@@ -58,12 +58,18 @@
                 <label > Membership  Number :</label>
             </div>
             <div class ="col-sm-8">
-                <input class = "form-control" type = "text" placeholder = "search user by membership number">
+                <input class = "form-control" type = "text" placeholder = "search user by membership number" ng-model = "srchMemberNo">
             </div>
             <div class="col-sm-offset-3 col-sm-4 nice-row">
-                <button class = "btn btn-success"> 
-                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                <button class = "btn btn-success" ng-click = "getUserDetails()"> 
+                    <span class="glyphicon glyphicon-search" aria-hidden="true" ></span>
                     search
+                </button>
+            </div>
+            <div class="col-sm-offset-3 col-sm-4 nice-row">
+                <button class = "btn btn-danger" ng-click = "deleteUser()"> 
+                    <span class="glyphicon glyphicon-user" aria-hidden="true" ></span>
+                    Delete this user
                 </button>
             </div>
         </div>
@@ -86,12 +92,16 @@
     <div class = "container form-box">
         <div class = "row">
             <div class="alert alert-danger" ng-show = "alertOn">
-                <strong>Danger!</strong> Some Required fields are missing. Please check Name ,Member Id Or Registration Date,
+                <strong>Warning!</strong> Some Required fields are missing. Please check Name ,Member Id Or Registration Date,
             </div>
             <div class = "col-sm-offset-4 col-sm-6">
-                <button class = "btn btn-success" style = "width : 50%" ng-click = "submitForm()">
+                <button class = "btn btn-success" style = "width : 50%" ng-click = "submitForm()" ng-show= "!updateEnable" >
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     submit 
+                </button>
+                <button class = "btn btn-success" style = "width : 50%" ng-click = "submitForm()" ng-show= "updateEnable">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    Update user Details 
                 </button>
             </div>
         </div>

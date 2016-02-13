@@ -10,6 +10,8 @@ app.controller("myCtrl",function($scope, $http){
     $scope.fieldAns = [];
     $scope.dateFieldAns = [];
     $scope.alertOn = false;
+    $scope.updateEnable = false;
+    var tempAns = [];
 
     $scope.txtRowSize = function(str){
     	
@@ -19,7 +21,9 @@ app.controller("myCtrl",function($scope, $http){
     	else return 1;
     }
 
-   
+    
+    
+
     $scope.checkDate = function(index){
         var ans = [9,15,17];
         if(ans.indexOf(index)>-1){
@@ -34,6 +38,8 @@ app.controller("myCtrl",function($scope, $http){
         }
     }
     init();
+
+
     var dateFormat = function(today){
 
         var dd = today.getDate();
@@ -46,7 +52,7 @@ app.controller("myCtrl",function($scope, $http){
         if(mm<10){
             mm='0'+mm
         } 
-        var today = dd+'/'+mm+'/'+yyyy;
+        var today = dd+'-'+mm+'-'+yyyy;
 
         console.log(today);
         return today;
@@ -60,52 +66,149 @@ app.controller("myCtrl",function($scope, $http){
         return flag;
 
     }
+    var strReverse = function(str){
+        var arr = str.split("-");
+        return arr[2]+"-"+arr[1]+"-"+arr[0];
+
+    }
+
     $scope.submitForm = function(){
 
+        
         if(!checkValidation()){
             $scope.alertOn = true;
             return;
         }
         $scope.alertOn =false;
 
-        var userDetails = {
-            MemberId                                 :$scope.fieldAns[0],
-            Name                                     :$scope.fieldAns[1],
-            FatherName                               :$scope.fieldAns[2],                                  
-            MotherName                               :$scope.fieldAns[3],
-            HasbandName                              :$scope.fieldAns[4],
-            PermanentAddress                         :$scope.fieldAns[5],
-            ResidentialAddress                       :$scope.fieldAns[6],
-            OfficeAddress                            :$scope.fieldAns[7],
-            MobileNumber                             :$scope.fieldAns[8],                                
-            DateOfBirth                              :dateFormat($scope.dateFieldAns[9]),
-            District                                 :$scope.fieldAns[10],
-            FirmDescription                          :$scope.fieldAns[11],
-            Religion                                 :$scope.fieldAns[12],
-            Nationality                              :$scope.fieldAns[13],   
-            EducationalQualification                 :$scope.fieldAns[14],   
-            CertificateDateBdBarCouncil              :dateFormat($scope.dateFieldAns[15]),
-            QualificationUnder61                     :$scope.fieldAns[16],
-            RegistrationDate                         :dateFormat($scope.dateFieldAns[17]),
-            DateOfComOfTheProOrVocation              :$scope.fieldAns[18],   
-            NameLegalCommercialOrCulturalAssociation :$scope.fieldAns[19],
-            NationalIdNumber                         :$scope.fieldAns[20],   
-        };
+       var userDetails = makeObject();
+
         
         console.log(JSON.stringify(userDetails));
 
-        $http({
-            url: "",
-            method : "post",
-            data   : JSON.stringify(userDetails)    
-        }).then(function(data){
-            console.log("success");
+        if($scope.updateEnable){
 
-        },function(err){
-            console.log( "failed");
+            $http({
+                url: "",
+                method : "post",
+                data   : JSON.stringify(userDetails)    
+            }).then(function(data){
+                console.log("success");
+
+            },function(err){
+                console.log( "failed");
+            });
+        }
+        else {
+
+            $http({
+                url: "",
+                method : "post",
+                data   : JSON.stringify(userDetails)    
+            }).then(function(data){
+                console.log("success");
+
+            },function(err){
+                console.log( "failed");
+            });
+
+        }
+        $scope.updateEnable =false;
+        $scope.fieldAns = [];
+    }
+
+    var makeObject = function(){
+
+         var userDetails = {
+            MemberId                                 : $scope.fieldAns[0],
+            Name                                     : $scope.fieldAns[1],
+            FatherName                               : $scope.fieldAns[2],                                  
+            MotherName                               : $scope.fieldAns[3],
+            HasbandName                              : $scope.fieldAns[4],
+            PermanentAddress                         : $scope.fieldAns[5],
+            ResidentialAddress                       : $scope.fieldAns[6],
+            OfficeAddress                            : $scope.fieldAns[7],
+            MobileNumber                             : $scope.fieldAns[8],                                
+            DateOfBirth                              : dateFormat($scope.dateFieldAns[9]),
+            District                                 : $scope.fieldAns[10],
+            FirmDescription                          : $scope.fieldAns[11],
+            Religion                                 : $scope.fieldAns[12],
+            Nationality                              : $scope.fieldAns[13],   
+            EducationalQualification                 : $scope.fieldAns[14],   
+            CertificateDateBdBarCouncil              : dateFormat($scope.dateFieldAns[15]),
+            QualificationUnder61                     : $scope.fieldAns[16],
+            RegistrationDate                         : dateFormat($scope.dateFieldAns[17]),
+            DateOfComOfTheProOrVocation              : $scope.fieldAns[18],   
+            NameLegalCommercialOrCulturalAssociation : $scope.fieldAns[19],
+            NationalIdNumber                         : $scope.fieldAns[20],   
+        };
+
+        return userDetails; 
+    }
+
+    var FillAnsField = function(data){
+
+            console.log(strReverse(data.DateOfBirth));
+             $scope.fieldAns[0]       = data.MemberId,
+             $scope.fieldAns[1]       = data.Name,
+             $scope.fieldAns[2]       = data.FatherName ,                        
+             $scope.fieldAns[3]       = data.MotherName,
+             $scope.fieldAns[4]       = data.HasbandName,
+             $scope.fieldAns[5]       = data.PermanentAddress,
+             $scope.fieldAns[6]       = data.ResidentialAddress, 
+             $scope.fieldAns[7]       = data.OfficeAddress ,
+             $scope.fieldAns[8]       = data.MobileNumber,                          
+             $scope.dateFieldAns[9]   =  new Date(strReverse(data.DateOfBirth)), 
+             $scope.fieldAns[10]      = data.District,
+             $scope.fieldAns[11]      = data.FirmDescription, 
+             $scope.fieldAns[12]      = data.Religion,
+             $scope.fieldAns[13]      = data.Nationality,
+             $scope.fieldAns[14]      = data.EducationalQualification,
+             $scope.dateFieldAns[15]  = new Date(strReverse (data.CertificateDateBdBarCouncil)),
+             $scope.fieldAns[16]      = data.QualificationUnder61,
+             $scope.dateFieldAns[17]  = new Date(strReverse (data.RegistrationDate)),
+             $scope.fieldAns[18]      = data.DateOfComOfTheProOrVocation,   
+             $scope.fieldAns[19]      = data.NameLegalCommercialOrCulturalAssociation,
+             $scope.fieldAns[20]      = data.NationalIdNumber
+        
+            
+          
+    }
+
+    $scope.getUserDetails = function(){
+
+        console.log("okay");
+        $scope.updateEnable =true;
+        $http({
+
+            method : "get",
+            url    : "data.json",
+            cache  : false
+        }).then(function(data){
+
+            console.log(data.data);
+            FillAnsField(data.data);
+
+        },function(){
+
         });
-    }  
+    }
+
+    $scope.deleteUser = function(){
+
+        $http({
+             method : "get",
+             url    : ""
+
+        }).then(function(){
+
+        },function(){
+
+        });
+    }
 
   
 
 });
+
+

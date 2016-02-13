@@ -56,6 +56,43 @@
             </div>
         </div>
     </div>
+
+    <div class = "row nice-row" style = "border-top: 5px solid white"> 
+        <div class = "col-sm-8">
+            <div class = "row middle-row">
+        
+                <div class = "col-sm-offset-2 col-sm-4" style = "text-align:right">start Date : </div>
+                <div class = "col-sm-6"> 
+                      <input class ="form-control" type = "date" ng-model = "srchStart" />
+                </div>
+            </div>
+            <div class = "row middle-row">
+            
+                <div class = "col-sm-offset-3 col-sm-3" style = "text-align:right">Finish Date : </div>
+                <div class = "col-sm-6"> 
+                      <input class ="form-control" type = "date" ng-model = "srchEnd" />
+                </div>
+            </div>
+            <div class = "row middle-row">
+
+                <div class = "col-sm-offset-6 col-sm-3">
+                    <button class = "btn btn-success" ng-click = "getReceipt()"> 
+                        <span class="glyphicon glyphicon-align-search" aria-hidden="true" ></span>
+                        search
+                    </button>
+                </div>
+                
+            </div> 
+            <div class = "row middle-row">
+                <div class = "col-sm-offset-6 col-sm-3">
+                    <button class = "btn btn-danger"> 
+                        <span class="glyphicon glyphicon-align-remove" aria-hidden="true"></span>    
+                        Delete Receipt
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container" style = "margin-top: 2%">
     	<div class ="row nice-row">
     		<div class = "col-sm-8">
@@ -90,29 +127,29 @@
     		</div>
     	</div>
     	<div class = "row nice-row" style = "border-top: 5px solid white"> 
-	    	<div class = "col-sm-8">
-	    		<div class = "row middle-row">
+            <div class = "col-sm-8">
+                <div class = "row middle-row">
             
-    				<div class = "col-sm-offset-2 col-sm-4" style = "text-align:right">start Date : </div>
-    				<div class = "col-sm-6"> 
-						  <input class ="form-control" type = "date" ng-model = "PaidDateTimeStart" />
-    				</div>
-    			</div>
-    			<div class = "row middle-row">
+                    <div class = "col-sm-offset-2 col-sm-4" style = "text-align:right">start Date : </div>
+                    <div class = "col-sm-6"> 
+                          <input class ="form-control" type = "date" ng-model = "PaidDateTimeStart" />
+                    </div>
+                </div>
+                <div class = "row middle-row">
                 
-    				<div class = "col-sm-offset-3 col-sm-3" style = "text-align:right">Finish Date : </div>
-    				<div class = "col-sm-6"> 
-						  <input class ="form-control" type = "date" ng-model = "PaidDateTimeEnd" />
-    				</div>
-    			</div>
+                    <div class = "col-sm-offset-3 col-sm-3" style = "text-align:right">Finish Date : </div>
+                    <div class = "col-sm-6"> 
+                          <input class ="form-control" type = "date" ng-model = "PaidDateTimeEnd" />
+                    </div>
+                </div>
                 <!--<div class = "row middle-row">
 
                     <div class = "col-sm-offset-8 col-sm-3">
                         <button class = "btn btn-success"> search</button>
                     </div>
                 </div> -->
-	    	</div>
-	    </div>
+            </div>
+        </div>
 
 	    <div class = "row nice-row" style = "border-top: 5px solid #4CAF50">
 	    	<div class = "col-sm-8" >
@@ -131,9 +168,13 @@
     <div class = "container form-box">
         <div class = "row">
             <div class = "col-sm-offset-4 col-sm-6">
-                <button class = "btn btn-success" style = "width : 50%" ng-click = "submitForm()">
+                <button class = "btn btn-success" style = "width : 50%" ng-click = "submitForm()" ng-show= "!updateEnable">
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     submit 
+                </button>
+                <button class = "btn btn-success" style = "width : 50%" ng-click = "submitForm()" ng-show = "updateEnable">
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    Update the receipt 
                 </button>
             </div>
         </div>
