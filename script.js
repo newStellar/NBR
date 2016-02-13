@@ -32,11 +32,7 @@ app.controller("myCtrl",function($scope, $http){
         };
         return false;
     }
-    $scope.clearData = function(){
-        $scope.updateEnable =false;
-        $scope.fieldAns = [];
-        $scope.dateFieldAns = [];
-    }
+
     var init =function(){
         for(var  i=0 ;i<$scope.fieldNames.length ; i++){
             $scope.dateFieldAns[i] =  new Date();
@@ -81,6 +77,7 @@ app.controller("myCtrl",function($scope, $http){
     $scope.clearData = function(){
 
         $scope.updateEnable =false;
+        $scope.alertOn =false;
         $scope.fieldAns = [];
         $scope.dateFieldAns = [];
     }
