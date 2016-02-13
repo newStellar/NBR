@@ -32,6 +32,11 @@ app.controller("myCtrl",function($scope, $http){
         };
         return false;
     }
+    $scope.clearData = function(){
+        $scope.updateEnable =false;
+        $scope.fieldAns = [];
+        $scope.dateFieldAns = [];
+    }
     var init =function(){
         for(var  i=0 ;i<$scope.fieldNames.length ; i++){
             $scope.dateFieldAns[i] =  new Date();
@@ -66,12 +71,19 @@ app.controller("myCtrl",function($scope, $http){
         return flag;
 
     }
+
     var strReverse = function(str){
         var arr = str.split("-");
         return arr[2]+"-"+arr[1]+"-"+arr[0];
 
     }
 
+    $scope.clearData = function(){
+
+        $scope.updateEnable =false;
+        $scope.fieldAns = [];
+        $scope.dateFieldAns = [];
+    }
     $scope.submitForm = function(){
 
         
@@ -113,8 +125,7 @@ app.controller("myCtrl",function($scope, $http){
             });
 
         }
-        $scope.updateEnable =false;
-        $scope.fieldAns = [];
+        $scope.clearData();
     }
 
     var makeObject = function(){
@@ -179,6 +190,7 @@ app.controller("myCtrl",function($scope, $http){
 
         console.log("okay");
         $scope.updateEnable =true;
+        $scope.alertOn =false;
         $http({
 
             method : "get",

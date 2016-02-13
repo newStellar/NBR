@@ -129,6 +129,12 @@ app.controller("receiptCtrl",function($scope ,$http){
 
 
    }
+
+   $scope.clearData = function(){
+
+   		$scope.updateEnable =false;
+		$scope.fieldValues = [];
+   }
 	$scope.submitForm = function(){
 		
 		
@@ -148,8 +154,7 @@ app.controller("receiptCtrl",function($scope ,$http){
 			console.log("failed");
 		});
 
-		$scope.updateEnable =false;
-		$scope.fieldValues = []; 
+		$scope.clearData();
 	}
 
 	$scope.getReceipt = function(){

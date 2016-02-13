@@ -52,10 +52,34 @@
             </ul>
         </div>
     </nav>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update Receipt</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Are You sure You want to update Receipt</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click = "submitForm()" data-dismiss="modal">Yes</button>
+                    <button type="button" class="btn btn-danger"  data-dismiss="modal" ng-click = "clearData()">NO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <div class = "container-fluid form-box">
         <div class = "row">
             <div class = "col-sm-offset-5 col-sm-6">
-                <h2> RECEIPT</h2>
+
+                <h2> 
+                    <span class="glyphicon glyphicon-book" aria-hidden="true" ></span>
+                    RECEIPT
+                </h2>
             </div>
         </div>
     </div>
@@ -89,7 +113,7 @@
             <div class = "row middle-row">
                 <div class = "col-sm-offset-6 col-sm-3">
                     <button class = "btn btn-danger"> 
-                        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>    
+                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>    
                         Delete Receipt
                     </button>
                 </div>
@@ -170,12 +194,20 @@
     </div>
     <div class = "container form-box">
         <div class = "row">
-            <div class = "col-sm-offset-4 col-sm-6">
-                <button class = "btn btn-success" style = "width : 50%" ng-click = "submitForm()" ng-show= "!updateEnable">
+            <div class = "col-sm-offset-2 col-sm-5" ng-show= "!updateEnable">
+                <button class = "btn btn-success" style = "width : 50%" ng-click = "submitForm()" >
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     submit 
                 </button>
-                <button class = "btn btn-success" style = "width : 50%" ng-click = "submitForm()" ng-show = "updateEnable">
+            </div>
+            <div class = "col-sm-5" ng-show= "!updateEnable">
+                <button class = "btn btn-danger" style = "width : 50%" ng-click = "clearData()">
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true" ></span>
+                    cancel 
+                </button>
+            </div>
+            <div class = "col-sm-offset-4 col-sm-6" ng-show = "updateEnable">
+                <button class = "btn btn-success" style = "width : 50%"  data-toggle="modal" data-target="#myModal" >
                     <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
                     Update the receipt 
                 </button>
